@@ -17,7 +17,7 @@ const create_list = (req, res) => {
 
 const get_lists = (req, res) => {
   List.find()
-    .populate("items shop")
+    .populate("shop")
     .then((lists) => {
       res.json(lists);
     })
@@ -43,8 +43,12 @@ const update_list = (req, res) => {
   List.findById(id)
     .then((list) => {
       list.name = name;
-      list.items = items;
       list.shop = shop;
+      if (items) {
+        items.forEach((item) => {
+          list.items.push(item);
+        });
+      }
       return list.save();
     })
     .then((result) => {
