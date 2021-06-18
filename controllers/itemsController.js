@@ -26,6 +26,16 @@ const get_items = (req, res) => {
     });
 };
 
+const get_item = (req, res) => {
+  const id = req.params.id;
+
+  Item.findById(id)
+    .then((item) => {
+      res.json(item);
+    })
+    .catch((err) => console.log(err));
+};
+
 const update_item = (req, res) => {
   const id = req.params.id;
   const name = req.body.itemName;
@@ -57,6 +67,7 @@ const delete_item = (req, res) => {
 module.exports = {
   create_item,
   get_items,
+  get_item,
   update_item,
   delete_item,
 };

@@ -24,6 +24,16 @@ const get_lists = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+const get_list = (req, res) => {
+  const id = req.params.id;
+
+  List.findById(id)
+    .then((list) => {
+      res.json(list);
+    })
+    .catch((err) => console.log(err));
+};
+
 const update_list = (req, res) => {
   const id = req.params.id;
   const name = req.body.listName;
@@ -56,6 +66,7 @@ const delete_list = (req, res) => {
 module.exports = {
   create_list,
   get_lists,
+  get_list,
   update_list,
   delete_list,
 };
