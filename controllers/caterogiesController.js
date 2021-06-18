@@ -22,7 +22,18 @@ const get_categories = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+const get_category = (req, res) => {
+  const id = req.params.id;
+
+  Category.findById(id)
+    .then((category) => {
+      res.json(category);
+    })
+    .catch((err) => console.log(err));
+};
+
 module.exports = {
   create_category,
   get_categories,
+  get_category,
 };

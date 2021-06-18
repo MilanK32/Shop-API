@@ -23,7 +23,18 @@ const get_shops = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+const get_shop = (req, res) => {
+  const id = req.params.id;
+
+  Shop.findById(id)
+    .then((shop) => {
+      res.json(shop);
+    })
+    .catch((err) => console.log(err));
+};
+
 module.exports = {
   create_shop,
   get_shops,
+  get_shop,
 };
