@@ -126,8 +126,8 @@ const delete_list_item = (req, res) => {
 
   List.findById(listId)
     .then((list) => {
-      const updatedListItems = list.items.filter((i) => {
-        return i._id.toString() !== itemId.toString();
+      const updatedListItems = list.items.filter((item) => {
+        return item._id.toString() !== itemId.toString();
       });
       list.items = updatedListItems;
       return list.save();
