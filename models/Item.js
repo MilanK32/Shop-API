@@ -1,23 +1,25 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const itemSchema = require("../models/Item").schema;
 
-const listSchema = new Schema(
+const itemSchema = new Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    items: [itemSchema],
-    shop: {
+    category: {
       type: Schema.Types.ObjectId,
-      ref: "Shop",
+      ref: "Category",
+      required: true,
+    },
+    quantity: {
+      type: Number,
       required: true,
     },
   },
   { timestamps: true }
 );
 
-const List = mongoose.model("List", listSchema);
+const Item = mongoose.model("Item", itemSchema);
 
-module.exports = List;
+module.exports = Item;
