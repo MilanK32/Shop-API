@@ -16,8 +16,8 @@ const create_category = (req, res) => {
 
 const get_categories = (req, res) => {
   Category.find()
-    .then((category) => {
-      res.json(category);
+    .then((categories) => {
+      res.json(categories);
     })
     .catch((err) => console.log(err));
 };
