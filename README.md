@@ -49,11 +49,11 @@ $ docker stop container-name
 - Start up your application:
 
 ```bash
-$ docker-composer up
+$ docker-compose up
 ```
 
 - Stopping the application
 
 ```bash
-$ docker-composer down
+$ docker-compose down
 ```
