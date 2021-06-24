@@ -41,7 +41,7 @@ $ docker run -it --rm --name <container-name> <image-name>
 - Stopping a container
 
 ```bash
-$ $ docker stop <container-name>
+$ docker stop <container-name>
 ```
 
 ### Starting the Application with Docker Compose
@@ -55,5 +55,5 @@ $ docker-composer up .
 - Stopping the application
 
 ```bash
-$ $ docker-composer down
+$ docker-composer down
 ```
