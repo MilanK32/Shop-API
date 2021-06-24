@@ -29,19 +29,19 @@ $ npm start
 - Building an image:
 
 ```bash
-$ docker build -t <image-name> .
+$ docker build -t image-name .
 ```
 
 - Running a container
 
 ```bash
-$ docker run -it --rm --name <container-name> <image-name>
+$ docker run -it --rm --name container-name image-name
 ```
 
 - Stopping a container
 
 ```bash
-$ docker stop <container-name>
+$ docker stop container-name
 ```
 
 ### Starting the Application with Docker Compose
