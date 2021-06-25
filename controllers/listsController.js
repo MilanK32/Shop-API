@@ -27,6 +27,7 @@ const get_list = (req, res) => {
   const id = req.params.id;
 
   List.findById(id)
+    .populate("shop")
     .then((list) => {
       res.json(list);
     })
@@ -115,7 +116,7 @@ const update_list_item = (req, res) => {
       return list.save();
     })
     .then((result) => {
-      res.json("List updated");
+      res.json("Item updated");
     })
     .catch((err) => console.log(err));
 };
