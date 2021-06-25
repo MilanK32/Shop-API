@@ -2,14 +2,14 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const dbURI = process.env.DB_URI;
+const dbURL = process.env.DB_URL;
 const PORT = process.env.PORT;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 mongoose
-  .connect(dbURI, {
+  .connect(dbURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -23,6 +23,7 @@ const routes = require("./routes/routes");
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to shop API" });
+  console.log(dbURL);
 });
 
 app.use("/api", routes);
