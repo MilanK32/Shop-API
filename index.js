@@ -23,7 +23,6 @@ const routes = require("./routes/routes");
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to shop API" });
-  console.log(dbURL);
 });
 
 app.use("/api", routes);
