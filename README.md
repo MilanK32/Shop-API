@@ -35,7 +35,7 @@ $ docker build -t image-name .
 - Running a container
 
 ```bash
-$ docker run -it --rm --name container-name image-name
+$ docker run -p port:port -it --rm --name container-name image-name
 ```
 
 - Stopping a container
