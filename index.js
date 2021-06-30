@@ -29,3 +29,19 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", routes);
+
+app.use((req, res, next) => {
+  const err = new Error("Not Found");
+  err.status = 404;
+  next(err);
+});
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.send({
+    err: {
+      status: err.status || 500,
+      message: err.message,
+    },
+  });
+});

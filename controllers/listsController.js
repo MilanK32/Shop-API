@@ -1,6 +1,6 @@
 const List = require("../models/List");
 
-const create_list = (req, res) => {
+const create_list = (req, res, next) => {
   const list = new List({
     name: req.body.listName,
     shop: req.body.listShop,
@@ -9,7 +9,7 @@ const create_list = (req, res) => {
   list
     .save()
     .then((result) => {
-      res.json("List created");
+      res.status(201).json("List created");
     })
     .catch((err) => console.log(err));
 };
@@ -18,7 +18,7 @@ const get_lists = (req, res) => {
   List.find()
     .populate("shop")
     .then((lists) => {
-      res.json(lists);
+      res.status(200).json(lists);
     })
     .catch((err) => console.log(err));
 };
@@ -29,7 +29,7 @@ const get_list = (req, res) => {
   List.findById(id)
     .populate("shop")
     .then((list) => {
-      res.json(list);
+      res.status(200).json(list);
     })
     .catch((err) => console.log(err));
 };
@@ -46,7 +46,7 @@ const update_list = (req, res) => {
       return list.save();
     })
     .then((result) => {
-      res.json("List updated");
+      res.status(200).json("List updated");
     })
     .catch((err) => console.log(err));
 };
@@ -56,7 +56,7 @@ const delete_list = (req, res) => {
 
   List.findByIdAndRemove(id)
     .then(() => {
-      res.json("List deleted");
+      res.status(200).json("List deleted");
     })
     .catch((err) => console.log(err));
 };
@@ -71,7 +71,7 @@ const create_list_item = (req, res) => {
       return list.save();
     })
     .then((result) => {
-      res.json("Item created");
+      res.status(201).json("Item created");
     })
     .catch((err) => console.log(err));
 };
@@ -82,7 +82,7 @@ const get_list_items = (req, res) => {
   List.findById(id)
     .populate("items.category")
     .then((list) => {
-      res.json(list.items);
+      res.status(201).json(list.items);
     })
     .catch((err) => console.log(err));
 };
@@ -95,7 +95,7 @@ const get_list_item = (req, res) => {
     .populate("items.category")
     .then((list) => {
       let item = list.items.id(itemId);
-      res.json(item);
+      res.status(200).json(item);
     })
     .catch((err) => console.log(err));
 };
@@ -116,7 +116,7 @@ const update_list_item = (req, res) => {
       return list.save();
     })
     .then((result) => {
-      res.json("Item updated");
+      res.status(200).json("Item updated");
     })
     .catch((err) => console.log(err));
 };
@@ -134,7 +134,7 @@ const delete_list_item = (req, res) => {
       return list.save();
     })
     .then((result) => {
-      res.json("Item deleted");
+      res.status(200).json("Item deleted");
     })
     .catch((err) => console.log(err));
 };
