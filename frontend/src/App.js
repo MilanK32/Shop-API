@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ShopList from "./components/ShopsList";
+import Navbar from "./UI/Navbar";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   });
   return (
     <div className='App'>
+      <Navbar />
       <ShopList shops={shops} />
     </div>
   );
