@@ -1,4 +1,4 @@
-.nav {
+/* .nav {
   display: flex;
   justify-content: stretch;
   width: 100%;
@@ -22,6 +22,7 @@
 }
 
 .nav > .nav-links {
+  margin: auto;
   font-size: 18px;
 }
 
@@ -85,4 +86,4 @@
     height: calc(100vh - 50px);
     overflow-y: auto;
   }
-}
+} */
