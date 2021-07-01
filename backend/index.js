@@ -2,11 +2,14 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+var cors = require("cors");
 const dbURL =
   process.env.NODE_ENV == "development"
     ? process.env.MONGODB_URL
     : process.env.DB_URL;
 const PORT = process.env.PORT;
+
+app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
