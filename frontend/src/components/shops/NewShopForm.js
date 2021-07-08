@@ -81,7 +81,7 @@ const NewShopForm = () => {
           />
         </div>
         <button className='bg-purple-500 hover:bg-purple-600 transition-all duration-200 text-white font-bold py-2 px-4 rounded mt-5'>
-          Submit
+          Add
         </button>
       </form>
     </div>

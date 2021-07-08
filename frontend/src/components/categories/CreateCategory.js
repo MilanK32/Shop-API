@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const NewCategoryForm = () => {
+const CreateCategory = () => {
   const categoryNameRef = useRef("");
   const categoryDescriptionRef = useRef("");
 
@@ -64,11 +64,11 @@ const NewCategoryForm = () => {
           />
         </div>
         <button className='bg-purple-500 hover:bg-purple-600 transition-all duration-200 text-white font-bold py-2 px-4 rounded mt-5'>
-          Submit
+          Add
         </button>
       </form>
     </div>
   );
 };
 
-export default NewCategoryForm;
+export default CreateCategory;

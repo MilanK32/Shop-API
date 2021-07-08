@@ -63,7 +63,11 @@ const delete_list = (req, res) => {
 
 const create_list_item = (req, res) => {
   const id = req.params.id;
-  const item = req.body;
+  const item = {
+    name: req.body.itemName,
+    category: req.body.itemCategory,
+    quantity: req.body.itemQuantity,
+  };
 
   List.findById(id)
     .then((list) => {
@@ -103,9 +107,9 @@ const get_list_item = (req, res) => {
 const update_list_item = (req, res) => {
   const listId = req.params.listId;
   const itemId = req.params.itemId;
-  const name = req.body.name;
-  const category = req.body.category;
-  const quantity = req.body.quantity;
+  const name = req.body.itemName;
+  const category = req.body.itemCategory;
+  const quantity = req.body.itemQuantity;
 
   List.findById(listId)
     .then((list) => {

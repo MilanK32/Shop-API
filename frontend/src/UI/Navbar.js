@@ -55,14 +55,6 @@ const Navbar = () => {
             <div className='hidden sm:block sm:ml-6'>
               <div className='flex space-x-4'>
                 <NavLink
-                  to='/'
-                  className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-400'
-                  activeClassName='bg-gray-600'
-                  exact={true}
-                >
-                  Home
-                </NavLink>
-                <NavLink
                   to='/lists'
                   className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-400'
                   activeClassName='bg-gray-600'

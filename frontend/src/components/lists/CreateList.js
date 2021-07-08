@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import NewItemModal from "./NewItemModal";
 
-const NewListForm = () => {
+const CreateList = () => {
   const [shops, setShops] = useState([]);
   const listNameRef = useRef("");
   const listShopRef = useRef("");
@@ -78,21 +77,12 @@ const NewListForm = () => {
             ))}
           </select>
         </div>
-        <div className=''>
-          <label
-            className='block text-gray-700 text-sm font-bold mb-2'
-            htmlFor='listItems'
-          >
-            Items
-          </label>
-        </div>
-        <NewItemModal />
         <button className='bg-purple-500 hover:bg-purple-600 transition-all duration-200 text-white font-bold py-2 px-4 rounded mt-5'>
-          Submit
+          Add
         </button>
       </form>
     </div>
   );
 };
 
-export default NewListForm;
+export default CreateList;
