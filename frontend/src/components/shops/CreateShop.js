@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const NewShopForm = () => {
+const CreateShop = () => {
   const shopNameRef = useRef("");
   const shopAddressRef = useRef("");
   const shopCityRef = useRef("");
@@ -88,4 +88,4 @@ const NewShopForm = () => {
   );
 };
 
-export default NewShopForm;
+export default CreateShop;

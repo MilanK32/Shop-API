@@ -6,7 +6,7 @@ import ListDetails from "./components/lists/ListDetails";
 import ShopList from "./components/shops/ShopsList";
 import CategoryList from "./components/categories/CategoryList";
 import CreateList from "./components/lists/CreateList";
-import NewShopForm from "./components/shops/NewShopForm";
+import CreateShop from "./components/shops/CreateShop";
 import CreateCategory from "./components/categories/CreateCategory";
 import EditList from "./components/lists/EditList";
 import "./App.css";
@@ -36,7 +36,7 @@ function App() {
             <ShopList />
           </Route>
           <Route path='/shops/new'>
-            <NewShopForm />
+            <CreateShop />
           </Route>
           <Route path='/categories' exact>
             <CategoryList />

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import List from "./List";
+import ShopFilter from "./ShopFilter";
+import CategoryFilter from "./CategoryFilter";
 
 const Lists = () => {
   const [lists, setLists] = useState([]);
@@ -37,9 +39,13 @@ const Lists = () => {
 
   return (
     <div className='container px-6 mx-auto grid mt-16'>
-      <h2 className='my-6 text-center text-2xl font-semibold text-gray-700'>
+      <h2 className='mt-6 text-center text-2xl font-semibold text-gray-700'>
         Lists
       </h2>
+      <div className='flex mx-auto w-2/3'>
+        <ShopFilter />
+        <CategoryFilter />
+      </div>
       {isLoading && <p className='text-center'>Loading...</p>}
       {!isLoading && (
         <div className='overflow-x-auto'>

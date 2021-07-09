@@ -4,11 +4,13 @@ const ShopDetailsModal = (props) => {
   const [shop, setShop] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/shops/${props.shop._id}`)
-      .then((response) => response.json())
-      .then((result) => setShop(result))
-      .catch((err) => console.log(err));
-  }, [props.shop._id]);
+    if (props.showModal) {
+      fetch(`http://localhost:8080/api/shops/${props.shop._id}`)
+        .then((response) => response.json())
+        .then((result) => setShop(result))
+        .catch((err) => console.log(err));
+    }
+  }, [props.shop._id, props.showModal]);
 
   return (
     <div>

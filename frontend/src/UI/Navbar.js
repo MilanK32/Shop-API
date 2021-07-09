@@ -48,9 +48,9 @@ const Navbar = () => {
           </div>
           <div className='flex-1 flex items-center justify-center'>
             <div className='flex-shrink-0 flex items-center'>
-              <span className='text-2xl text-white font-bold font-sans'>
+              <a href='/' className='text-2xl text-white font-bold font-sans'>
                 Shopping Plan App
-              </span>
+              </a>
             </div>
             <div className='hidden sm:block sm:ml-6'>
               <div className='flex space-x-4'>

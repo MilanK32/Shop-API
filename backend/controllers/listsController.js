@@ -86,7 +86,7 @@ const get_list_items = (req, res) => {
   List.findById(id)
     .populate("items.category")
     .then((list) => {
-      res.status(201).json(list.items);
+      res.status(200).json(list.items);
     })
     .catch((err) => console.log(err));
 };
