@@ -15,8 +15,16 @@ const create_list = (req, res, next) => {
 };
 
 const get_lists = (req, res) => {
-  List.find()
-    .populate("shop")
+  const filterQuery = req.query;
+  if (req.query.shop) {
+    filterQuery.shop = req.query.shop;
+  }
+  if (req.query.items) {
+    filterQuery.items = req.query.items;
+  }
+
+  List.find(filterQuery)
+    .populate("shop items.category")
     .then((lists) => {
       res.status(200).json(lists);
     })
