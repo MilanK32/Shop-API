@@ -27,35 +27,35 @@ const ShopFilter = (props) => {
   };
 
   return (
-    <div className="my-6 mr-2 py-4 px-6 bg-white shadow-lg rounded-lg w-full">
-      <div className="relative self-center ">
-        <span className="text-lg">Filter By Shop</span>
+    <div className='my-6 mr-2 py-4 px-6 bg-white shadow-lg rounded-lg w-full'>
+      <div className='relative self-center '>
+        <span className='text-lg'>Filter By Shop</span>
 
-        <div className="mt-1 min-w-max rounded transition delay-75 ease-in-out z-10">
-          <div className="grid grid-cols-3">
+        <div className='mt-1 min-w-max rounded transition delay-75 ease-in-out z-10'>
+          <div className='grid grid-cols-3'>
             {shops.map((shop) => (
               <label
                 key={shop._id}
-                className="flex radio p-2 cursor-pointer items-center mt-3 px-2"
+                className='flex radio p-2 cursor-pointer items-center mt-3 px-2'
               >
                 <input
-                  type="radio"
-                  className="my-auto transform scale-125"
+                  type='radio'
+                  className='my-auto transform scale-125'
                   value={shop._id}
-                  name="shop"
+                  name='shop'
                   checked={selectedShop === shop._id}
                   onChange={shopFilterHandler}
                 />
 
-                <span className="ml-2 text-gray-700">{shop.name}</span>
+                <span className='ml-2 text-gray-700'>{shop.name}</span>
               </label>
             ))}
           </div>
         </div>
         {isFiltered && (
-          <div className="w-full text-center">
+          <div className='w-full text-center pt-4'>
             <span
-              className="cursor-pointer underline px-4"
+              className='cursor-pointer underline px-4'
               onClick={clearFilter}
             >
               Clear Filter
