@@ -59,7 +59,7 @@ const Lists = () => {
   };
 
   return (
-    <div className="container px-6 mx-auto grid mt-16">
+    <div className="container px-6 pb-4 mx-auto grid mt-16">
       <h2 className="mt-6 text-center text-2xl font-semibold text-gray-700">
         Lists
       </h2>
@@ -91,6 +91,9 @@ const Lists = () => {
                     ))}
                   </tbody>
                 </table>
+                {!isLoading && lists.length === 0 && (
+                  <p className="p-4">No results match your search criteria</p>
+                )}
               </div>
               <NavLink
                 to="/lists/new"
