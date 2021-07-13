@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Shop from "./Shop";
+import config from "../../config";
 
 const ShopList = () => {
   const [shops, setShops] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/shops")
+    fetch(config.shopsURL)
       .then((response) => response.json())
       .then((result) => {
         setShops(result);

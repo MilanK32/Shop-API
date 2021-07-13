@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import config from "../../config";
 
 const ShopFilter = (props) => {
   const [shops, setShops] = useState([]);
@@ -6,7 +7,7 @@ const ShopFilter = (props) => {
   const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/shops")
+    fetch(config.shopsURL)
       .then((response) => response.json())
       .then((result) => {
         setShops(result);

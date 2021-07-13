@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import config from "../../config";
 
 const CreateCategory = () => {
   const categoryNameRef = useRef("");
@@ -12,7 +13,7 @@ const CreateCategory = () => {
       categoryDescription: categoryDescriptionRef.current.value,
     };
 
-    fetch("http://localhost:8080/api/categories", {
+    fetch(config.categoriesURL, {
       method: "POST",
       body: JSON.stringify(category),
       headers: {
@@ -27,43 +28,43 @@ const CreateCategory = () => {
   };
 
   return (
-    <div className='w-2/5 m-auto'>
-      <h1 className='text-center text-3xl py-10'>New Category</h1>
+    <div className="w-2/5 m-auto">
+      <h1 className="text-center text-3xl py-10">New Category</h1>
       <form
-        className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={submitHandler}
       >
-        <div className='mb-4'>
+        <div className="mb-4">
           <label
-            className='block text-gray-700 text-sm font-bold mb-2'
-            htmlFor='categoryName'
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="categoryName"
           >
             Category Name
           </label>
           <input
-            className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-            id='categoryName'
-            type='text'
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="categoryName"
+            type="text"
             ref={categoryNameRef}
-            placeholder='Category name'
+            placeholder="Category name"
           />
         </div>
-        <div className='mb-4'>
+        <div className="mb-4">
           <label
-            className='block text-gray-700 text-sm font-bold mb-2'
-            htmlFor='categoryDescription'
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="categoryDescription"
           >
             Description
           </label>
           <textarea
-            className='w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none resize-none'
-            rows='4'
-            id='categoryDescription'
+            className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none resize-none"
+            rows="4"
+            id="categoryDescription"
             ref={categoryDescriptionRef}
-            placeholder='Category description'
+            placeholder="Category description"
           />
         </div>
-        <button className='bg-purple-500 hover:bg-purple-600 transition-all duration-200 text-white font-bold py-2 px-4 rounded mt-5'>
+        <button className="bg-purple-500 hover:bg-purple-600 transition-all duration-200 text-white font-bold py-2 px-4 rounded mt-5">
           Add
         </button>
       </form>
