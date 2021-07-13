@@ -22,31 +22,31 @@ const Item = (props) => {
   };
 
   return (
-    <div className='block'>
-      <div className='text-md flex justify-between'>
-        <div className='flex'>
-          <div className='pb-4'>
-            <span className='mr-1 font-light'>{props.item.name}</span>
+    <div className="block">
+      <div className="text-md flex justify-between">
+        <div className="flex">
+          <div className="pb-4">
+            <span className="mr-1 font-light">{props.item.name}</span>
           </div>
-          <span className=''>-</span>
-          <div className='pb-4'>
-            <span className='ml-1 font-light'>{props.item.quantity}x</span>
+          <span className="">-</span>
+          <div className="pb-4">
+            <span className="ml-1 font-light">{props.item.quantity}x</span>
           </div>
         </div>
-        <div className='mx-2 flex'>
+        <div className="mx-2 flex">
           <VisibilityIcon
-            fontSize='small'
-            className='mx-1 cursor-pointer hover:text-gray-500'
+            fontSize="small"
+            className="mx-1 cursor-pointer hover:text-gray-500"
             onClick={toggleDetailsModalHandler}
           />
           <EditIcon
-            fontSize='small'
-            className='mx-2 cursor-pointer hover:text-gray-500'
+            fontSize="small"
+            className="mx-2 cursor-pointer hover:text-gray-500"
             onClick={toggleEditModalHandler}
           />
           <DeleteForeverOutlinedIcon
-            fontSize='small'
-            className='mx-1 text-red-600 cursor-pointer hover:text-red-500'
+            fontSize="small"
+            className="mx-1 text-red-600 cursor-pointer hover:text-red-500"
             onClick={deleteItem}
           />
         </div>

@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
+import { useHistory } from "react-router-dom";
 import config from "../../config";
 
 const CreateShop = () => {
   const shopNameRef = useRef("");
   const shopAddressRef = useRef("");
   const shopCityRef = useRef("");
+  const history = useHistory();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ const CreateShop = () => {
     })
       .then((response) => {
         response.json();
-        window.location.replace("/shops");
+        history.push("/shops");
       })
       .catch((err) => console.log(err));
   };

@@ -10,16 +10,16 @@ const Category = (props) => {
   };
 
   return (
-    <tr className='border-b border-gray-200 hover:bg-gray-100'>
-      <td className='py-3 px-6 text-left whitespace-nowrap'>
-        <span className='font-medium'>{props.category.name}</span>
+    <tr className="border-b border-gray-200 hover:bg-gray-100">
+      <td className="py-3 px-6 text-left whitespace-nowrap">
+        <span className="font-medium">{props.category.name}</span>
       </td>
-      <td className='py-3 px-6 text-left'>
-        <span className='font-medium'>{props.category.description}</span>
+      <td className="py-3 px-6 text-left">
+        <span className="font-medium">{props.category.description}</span>
       </td>
-      <td className='flex py-3 px-6'>
+      <td className="flex py-3 px-6">
         <VisibilityIcon
-          className='cursor-pointer hover:text-gray-500 mx-2'
+          className="cursor-pointer hover:text-gray-500 mx-2"
           onClick={toggleModalHandler}
         />
         <CategoryDetailsModal

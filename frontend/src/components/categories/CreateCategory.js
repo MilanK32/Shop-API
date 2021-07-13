@@ -1,9 +1,11 @@
 import React, { useRef } from "react";
+import { useHistory } from "react-router-dom";
 import config from "../../config";
 
 const CreateCategory = () => {
   const categoryNameRef = useRef("");
   const categoryDescriptionRef = useRef("");
+  const history = useHistory();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const CreateCategory = () => {
     })
       .then((response) => {
         response.json();
-        window.location.replace("/categories");
+        history.push("/categories");
       })
       .catch((err) => console.log(err));
   };

@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import config from "../../config";
 
 const CreateList = () => {
   const [shops, setShops] = useState([]);
   const listNameRef = useRef("");
   const listShopRef = useRef("");
+  const history = useHistory();
 
   useEffect(() => {
     fetch(config.shopsURL)
@@ -32,7 +34,7 @@ const CreateList = () => {
     })
       .then((response) => {
         response.json();
-        window.location.replace("/");
+        history.push("/lists");
       })
       .catch((err) => console.log(err));
   };

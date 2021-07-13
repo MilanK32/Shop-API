@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import config from "../../config";
 
 const EditList = () => {
@@ -8,7 +8,7 @@ const EditList = () => {
   const listNameRef = useRef("");
   const listShopRef = useRef("");
   const [isLoading, setIsLoading] = useState(true);
-
+  const history = useHistory();
   const { id } = useParams();
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const EditList = () => {
     })
       .then((response) => {
         response.json();
-        window.location.replace("/lists");
+        history.push("/lists");
       })
       .catch((err) => console.log(err));
   };

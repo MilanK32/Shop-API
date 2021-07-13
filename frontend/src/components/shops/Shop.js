@@ -10,19 +10,19 @@ const Shop = (props) => {
   };
 
   return (
-    <tr className='border-b border-gray-200 hover:bg-gray-100'>
-      <td className='py-3 px-6 text-left whitespace-nowrap'>
-        <span className='font-medium'>{props.shop.name}</span>
+    <tr className="border-b border-gray-200 hover:bg-gray-100">
+      <td className="py-3 px-6 text-left whitespace-nowrap">
+        <span className="font-medium">{props.shop.name}</span>
       </td>
-      <td className='py-3 px-6 text-left'>
-        <span className='font-medium'>{props.shop.address}</span>
+      <td className="py-3 px-6 text-left">
+        <span className="font-medium">{props.shop.address}</span>
       </td>
-      <td className='py-3 px-6 text-center'>
-        <span className='font-medium'>{props.shop.city}</span>
+      <td className="py-3 px-6 text-center">
+        <span className="font-medium">{props.shop.city}</span>
       </td>
-      <td className='py-3 px-6 text-center'>
+      <td className="py-3 px-6 text-center">
         <VisibilityIcon
-          className='cursor-pointer hover:text-gray-500 mx-2'
+          className="cursor-pointer hover:text-gray-500 mx-2"
           onClick={toggleModalHandler}
         />
         <ShopDetailsModal
