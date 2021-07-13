@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import List from "./List";
 import ShopFilter from "./ShopFilter";
 import CategoryFilter from "./CategoryFilter";
+import config from "../../config";
 
 const Lists = () => {
   const [lists, setLists] = useState([]);
@@ -18,9 +19,7 @@ const Lists = () => {
     const urlFilter = `${urlShopFilter}&${urlCategoryFilter}`;
     const query = new URLSearchParams(urlFilter);
     const params = query.toString();
-    const url = params
-      ? `http://localhost:8080/api/lists?${params}`
-      : "http://localhost:8080/api/lists";
+    const url = params ? `${config.listsURL}?${params}` : `${config.listsURL}`;
 
     fetch(url)
       .then((response) => response.json())
@@ -40,7 +39,7 @@ const Lists = () => {
 
   const onDeleteListHandler = (id) => {
     if (window.confirm("List will be deleted. Proceed?")) {
-      fetch(`http://localhost:8080/api/lists/${id}`, {
+      fetch(`${config.listsURL}/${id}`, {
         method: "DELETE",
       })
         .then((result) => {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import config from "../../config";
 
 const CategoryFilter = (props) => {
   const [categories, setCategories] = useState([]);
@@ -6,7 +7,7 @@ const CategoryFilter = (props) => {
   const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/categories")
+    fetch(`${config.categoriesURL}`)
       .then((response) => response.json())
       .then((result) => {
         setCategories(result);

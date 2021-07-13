@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import config from "../../config";
 
 const CreateList = () => {
   const [shops, setShops] = useState([]);
@@ -6,7 +7,7 @@ const CreateList = () => {
   const listShopRef = useRef("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/shops")
+    fetch(config.shopsURL)
       .then((response) => response.json())
       .then((result) => {
         setShops(result);
@@ -22,7 +23,7 @@ const CreateList = () => {
       listShop: listShopRef.current.value,
     };
 
-    fetch("http://localhost:8080/api/lists", {
+    fetch(config.listsURL, {
       method: "POST",
       body: JSON.stringify(list),
       headers: {
@@ -37,37 +38,37 @@ const CreateList = () => {
   };
 
   return (
-    <div className='w-2/5 m-auto'>
-      <h1 className='text-center text-3xl py-10'>New List</h1>
+    <div className="w-2/5 m-auto">
+      <h1 className="text-center text-3xl py-10">New List</h1>
       <form
-        className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={submitHandler}
       >
-        <div className='mb-4'>
+        <div className="mb-4">
           <label
-            className='block text-gray-700 text-sm font-bold mb-2'
-            htmlFor='listName'
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="listName"
           >
             List Name
           </label>
           <input
-            className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-            id='listName'
-            type='text'
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="listName"
+            type="text"
             ref={listNameRef}
-            placeholder='List name'
+            placeholder="List name"
           />
         </div>
-        <div className='mb-4'>
+        <div className="mb-4">
           <label
-            className='block text-gray-700 text-sm font-bold mb-2'
-            htmlFor='listShop'
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="listShop"
           >
             Shop
           </label>
           <select
-            className='block bg-white appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white'
-            id='listShop'
+            className="block bg-white appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white"
+            id="listShop"
             ref={listShopRef}
           >
             {shops.map((shop) => (
@@ -77,7 +78,7 @@ const CreateList = () => {
             ))}
           </select>
         </div>
-        <button className='bg-purple-500 hover:bg-purple-600 transition-all duration-200 text-white font-bold py-2 px-4 rounded mt-5'>
+        <button className="bg-purple-500 hover:bg-purple-600 transition-all duration-200 text-white font-bold py-2 px-4 rounded mt-5">
           Add
         </button>
       </form>
