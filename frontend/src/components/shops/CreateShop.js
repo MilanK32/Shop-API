@@ -17,7 +17,7 @@ const CreateShop = () => {
       shopCity: shopCityRef.current.value,
     };
 
-    fetch(config.shopsURL, {
+    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops", {
       method: "POST",
       body: JSON.stringify(shop),
       headers: {
@@ -26,7 +26,7 @@ const CreateShop = () => {
     })
       .then((response) => {
         response.json();
-        history.push("/shops");
+        //history.push("/shops");
       })
       .catch((err) => console.log(err));
   };

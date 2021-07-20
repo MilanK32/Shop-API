@@ -25,7 +25,7 @@ const CreateList = () => {
       listShop: listShopRef.current.value,
     };
 
-    fetch(config.listsURL, {
+    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists", {
       method: "POST",
       body: JSON.stringify(list),
       headers: {
@@ -34,7 +34,7 @@ const CreateList = () => {
     })
       .then((response) => {
         response.json();
-        history.push("/lists");
+        // history.push("/lists");
       })
       .catch((err) => console.log(err));
   };
