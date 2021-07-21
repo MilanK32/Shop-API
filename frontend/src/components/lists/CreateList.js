@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
-import config from "../../config";
+import { useHistory } from "react-router-dom";
+// import config from "../../config";
 
 const CreateList = () => {
   const [shops, setShops] = useState([]);
   const listNameRef = useRef("");
   const listShopRef = useRef("");
-  // const history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
-    fetch(config.shopsURL)
+    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops")
       .then((response) => response.json())
       .then((result) => {
         setShops(result);
@@ -20,9 +20,13 @@ const CreateList = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
+    const listShop = shops.find(
+      (shop) => shop._id === listShopRef.current.value
+    );
+
     const list = {
       listName: listNameRef.current.value,
-      listShop: listShopRef.current.value,
+      listShop: listShop,
     };
 
     fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists", {
@@ -34,7 +38,7 @@ const CreateList = () => {
     })
       .then((response) => {
         response.json();
-        // history.push("/lists");
+        history.push("/lists");
       })
       .catch((err) => console.log(err));
   };

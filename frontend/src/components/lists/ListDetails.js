@@ -11,11 +11,13 @@ const ListDetails = () => {
   let { listId } = useParams();
 
   const getList = useCallback(() => {
-    fetch(`${config.listsURL}/${listId}`)
+    fetch(
+      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${listId}`
+    )
       .then((response) => response.json())
       .then((result) => {
         setList(result);
-        return fetch(`${config.listsURL}/${listId}/items`);
+        // return fetch(`${config.listsURL}/${listId}/items`);
       })
       .then((response) => response.json())
       .then((result) => {
@@ -60,11 +62,11 @@ const ListDetails = () => {
             <div>
               <div className="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-6 border-t">
                 <p className="text-gray-600">Shop</p>
-                <p>{list.shop.name}</p>
+                {/* <p>{list.shop.name}</p> */}
               </div>
               <div className="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-6 border-t">
                 <p className="text-gray-600">List Items</p>
-                <div>
+                {/* <div>
                   {items.map((item) => (
                     <Item
                       key={item._id}
@@ -79,7 +81,7 @@ const ListDetails = () => {
                     onItemSubmit={getList}
                     onGetLists={getList}
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

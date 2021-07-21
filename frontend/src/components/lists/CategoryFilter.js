@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import config from "../../config";
+// import config from "../../config";
 
 const CategoryFilter = (props) => {
   const [categories, setCategories] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
-    fetch(`${config.categoriesURL}`)
+    fetch(
+      "https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/categories"
+    )
       .then((response) => response.json())
       .then((result) => {
         setCategories(result);
