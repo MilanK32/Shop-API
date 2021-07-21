@@ -21,7 +21,7 @@ const Lists = () => {
     const params = query.toString();
     const url = params ? `${config.listsURL}?${params}` : `${config.listsURL}`;
 
-    fetch(url)
+    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists")
       .then((response) => response.json())
       .then((result) => {
         setLists(result);
@@ -59,7 +59,7 @@ const Lists = () => {
 
   return (
     <div className="container px-6 pb-4 mx-auto grid mt-16">
-      <h2 className="mt-6 text-center text-2xl font-semibold text-gray-700">
+      {/* <h2 className="mt-6 text-center text-2xl font-semibold text-gray-700">
         Lists
       </h2>
       {isLoading && <p className="text-center">Loading...</p>}
@@ -105,7 +105,7 @@ const Lists = () => {
             </div>
           </div>
         </React.Fragment>
-      )}
+      )} */}
     </div>
   );
 };

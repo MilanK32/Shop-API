@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
-import config from "../../config";
+// import config from "../../config";
 
 const CreateCategory = () => {
   const categoryNameRef = useRef("");
@@ -15,13 +15,16 @@ const CreateCategory = () => {
       categoryDescription: categoryDescriptionRef.current.value,
     };
 
-    fetch(config.categoriesURL, {
-      method: "POST",
-      body: JSON.stringify(category),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      "https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/categories",
+      {
+        method: "POST",
+        body: JSON.stringify(category),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => {
         response.json();
         history.push("/categories");

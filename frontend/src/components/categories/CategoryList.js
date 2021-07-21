@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Category from "./Category";
 import { NavLink } from "react-router-dom";
-import config from "../../config";
+// import config from "../../config";
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(config.categoriesURL)
+    fetch(
+      "https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/categories"
+    )
       .then((response) => response.json())
       .then((result) => {
         setCategories(result);

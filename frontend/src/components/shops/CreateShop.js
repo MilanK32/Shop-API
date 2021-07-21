@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
-import config from "../../config";
+// import config from "../../config";
 
 const CreateShop = () => {
   const shopNameRef = useRef("");
@@ -26,7 +26,7 @@ const CreateShop = () => {
     })
       .then((response) => {
         response.json();
-        //history.push("/shops");
+        history.push("/shops");
       })
       .catch((err) => console.log(err));
   };

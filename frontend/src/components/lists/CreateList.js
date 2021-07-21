@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import config from "../../config";
 
 const CreateList = () => {
   const [shops, setShops] = useState([]);
   const listNameRef = useRef("");
   const listShopRef = useRef("");
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     fetch(config.shopsURL)
