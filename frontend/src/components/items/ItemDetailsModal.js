@@ -7,7 +7,7 @@ const ItemDetailsModal = (props) => {
 
   useEffect(() => {
     if (props.showDetailsModal) {
-      fetch(`${config.listsURL}/${props.listId}/items/${props.item._id}`)
+      fetch(`${config.listsURL}/${props.listId}/items/${props.item.id}`)
         .then((response) => response.json())
         .then((result) => {
           setItem(result);
@@ -18,7 +18,7 @@ const ItemDetailsModal = (props) => {
           console.log(err);
         });
     }
-  }, [props.listId, props.item._id, props.showDetailsModal]);
+  }, [props.listId, props.item.id, props.showDetailsModal]);
 
   return (
     <div>

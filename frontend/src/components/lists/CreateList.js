@@ -21,7 +21,7 @@ const CreateList = () => {
     e.preventDefault();
 
     const listShop = shops.find(
-      (shop) => shop._id === listShopRef.current.value
+      (shop) => shop.id === listShopRef.current.value
     );
 
     const list = {
@@ -78,7 +78,7 @@ const CreateList = () => {
             ref={listShopRef}
           >
             {shops.map((shop) => (
-              <option key={shop._id} value={shop._id}>
+              <option key={shop.id} value={shop.id}>
                 {shop.name}
               </option>
             ))}

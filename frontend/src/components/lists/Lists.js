@@ -39,9 +39,12 @@ const Lists = () => {
 
   const onDeleteListHandler = (id) => {
     if (window.confirm("List will be deleted. Proceed?")) {
-      fetch(`${config.listsURL}/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((result) => {
           getLists();
         })
@@ -84,7 +87,7 @@ const Lists = () => {
                     <tbody className="text-gray-600 text-sm font-light">
                       {lists.map((list) => (
                         <List
-                          key={list._id}
+                          key={list.id}
                           list={list}
                           onDelete={onDeleteListHandler}
                         />

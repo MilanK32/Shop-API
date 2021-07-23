@@ -16,7 +16,9 @@ const CreateItemModal = (props) => {
   }, [showModal]);
 
   const getCategories = () => {
-    fetch(config.categoriesURL)
+    fetch(
+      "https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/categories"
+    )
       .then((response) => response.json())
       .then((result) => {
         setCategories(result);
@@ -37,13 +39,16 @@ const CreateItemModal = (props) => {
       itemQuantity: itemQuantityRef.current.value,
     };
 
-    fetch(`${config.listsURL}/${props.list._id}/items`, {
-      method: "POST",
-      body: JSON.stringify(item),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${props.list.id}/items`,
+      {
+        method: "POST",
+        body: JSON.stringify(item),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => {
         response.json();
         props.onItemSubmit();
@@ -110,7 +115,7 @@ const CreateItemModal = (props) => {
                       ref={itemCategoryRef}
                     >
                       {categories.map((category) => (
-                        <option key={category._id} value={category._id}>
+                        <option key={category.id} value={category.id}>
                           {category.name}
                         </option>
                       ))}

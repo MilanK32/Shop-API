@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import config from "../../config";
+// import config from "../../config";
 
 const EditList = () => {
   const [list, setList] = useState({});
@@ -12,11 +12,15 @@ const EditList = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${config.listsURL}/${id}`)
+    fetch(
+      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${id}`
+    )
       .then((response) => response.json())
       .then((result) => {
         setList(result);
-        return fetch(config.shopsURL);
+        return fetch(
+          "https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops/"
+        );
       })
       .then((response) => response.json())
       .then((result) => {
@@ -32,18 +36,25 @@ const EditList = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
+    const listShop = shops.find(
+      (shop) => shop.id === listShopRef.current.value
+    );
+
     const list = {
       listName: listNameRef.current.value,
-      listShop: listShopRef.current.value,
+      listShop: listShop,
     };
 
-    fetch(`${config.listsURL}/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(list),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(list),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => {
         response.json();
         history.push("/lists");
@@ -87,10 +98,10 @@ const EditList = () => {
               className="block bg-white appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white"
               id="listShop"
               ref={listShopRef}
-              defaultValue={list.shop._id}
+              defaultValue={list.shop.id}
             >
               {shops.map((shop) => (
-                <option key={shop._id} value={shop._id}>
+                <option key={shop.id} value={shop.id}>
                   {shop.name}
                 </option>
               ))}

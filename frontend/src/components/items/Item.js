@@ -10,7 +10,7 @@ const Item = (props) => {
   const [showEditModal, setShowEditModal] = useState(false);
 
   const deleteItem = () => {
-    props.onDeleteItem(props.item._id);
+    props.onDeleteItem(props.item.id);
   };
 
   const toggleDetailsModalHandler = () => {
@@ -59,7 +59,7 @@ const Item = (props) => {
       />
       <EditItemModal
         listId={props.listId}
-        itemId={props.item._id}
+        itemId={props.item.id}
         showEditModal={showEditModal}
         onToggleModal={toggleEditModalHandler}
         onItemUpdate={props.onItemUpdate}

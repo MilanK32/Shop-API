@@ -43,7 +43,7 @@ const CategoryList = () => {
                   </thead>
                   <tbody className="text-gray-600 text-sm font-light">
                     {categories.map((category) => (
-                      <Category key={category._id} category={category} />
+                      <Category key={category.id} category={category} />
                     ))}
                   </tbody>
                 </table>

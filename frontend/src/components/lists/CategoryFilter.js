@@ -36,7 +36,7 @@ const CategoryFilter = (props) => {
             onChange={categoryFilterHandler}
           >
             {categories.map((category) => (
-              <option key={category._id} className="pt-6" value={category._id}>
+              <option key={category.id} className="pt-6" value={category.id}>
                 {category.name}
               </option>
             ))}

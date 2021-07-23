@@ -6,7 +6,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 const List = (props) => {
   const deleteList = () => {
-    props.onDelete(props.list._id);
+    props.onDelete(props.list.id);
   };
 
   return (
@@ -18,10 +18,10 @@ const List = (props) => {
         <span className="font-medium">{props.list.shop.name}</span>
       </td>
       <td className="flex justify-center py-3 px-6 text-center">
-        <NavLink to={`/lists/${props.list._id}`}>
+        <NavLink to={`/lists/${props.list.id}`}>
           <VisibilityIcon className="mx-2 cursor-pointer hover:text-gray-500" />
         </NavLink>
-        <NavLink to={`/lists/${props.list._id}/update`}>
+        <NavLink to={`/lists/${props.list.id}/update`}>
           <EditIcon className="mx-2 cursor-pointer hover:text-gray-500" />
         </NavLink>
         <DeleteIcon

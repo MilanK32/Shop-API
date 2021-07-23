@@ -7,13 +7,13 @@ const ShopDetailsModal = (props) => {
   useEffect(() => {
     if (props.showModal) {
       fetch(
-        `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops/${props.shop._id}`
+        `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops/${props.shop.id}`
       )
         .then((response) => response.json())
         .then((result) => setShop(result))
         .catch((err) => console.log(err));
     }
-  }, [props.shop._id, props.showModal]);
+  }, [props.shop.id, props.showModal]);
 
   return (
     <div>

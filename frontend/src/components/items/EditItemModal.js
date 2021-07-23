@@ -107,11 +107,11 @@ const EditItemModal = (props) => {
                     <select
                       className="block bg-white appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white"
                       id="itemCategory"
-                      defaultValue={item.category._id}
+                      defaultValue={item.category.id}
                       ref={itemCategoryRef}
                     >
                       {categories.map((category) => (
-                        <option key={category._id} value={category._id}>
+                        <option key={category.id} value={category.id}>
                           {category.name}
                         </option>
                       ))}

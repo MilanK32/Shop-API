@@ -35,7 +35,7 @@ const ShopFilter = (props) => {
             onChange={shopFilterHandler}
           >
             {shops.map((shop) => (
-              <option key={shop._id} className="pt-6" value={shop._id}>
+              <option key={shop.id} className="pt-6" value={shop.id}>
                 {shop.name}
               </option>
             ))}

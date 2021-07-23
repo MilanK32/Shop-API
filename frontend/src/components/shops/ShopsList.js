@@ -41,7 +41,7 @@ const ShopList = () => {
                   </thead>
                   <tbody className="text-gray-600 text-sm font-light">
                     {shops.map((shop) => (
-                      <Shop key={shop._id} shop={shop} />
+                      <Shop key={shop.id} shop={shop} />
                     ))}
                   </tbody>
                 </table>

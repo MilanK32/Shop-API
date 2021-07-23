@@ -7,13 +7,13 @@ const CategoryDetailsModal = (props) => {
   useEffect(() => {
     if (props.showModal) {
       fetch(
-        `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/categories/${props.category._id}`
+        `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/categories/${props.category.id}`
       )
         .then((response) => response.json())
         .then((result) => setCategory(result))
         .catch((err) => console.log(err));
     }
-  }, [props.category._id, props.showModal]);
+  }, [props.category.id, props.showModal]);
 
   return (
     <div>
