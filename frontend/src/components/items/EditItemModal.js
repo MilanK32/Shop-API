@@ -10,11 +10,15 @@ const EditItemModal = (props) => {
   const itemQuantityRef = useRef("");
 
   const getItem = useCallback(() => {
-    fetch(`${config.listsURL}/${props.listId}/items/${props.itemId}`)
+    fetch(
+      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${props.listId}/items/${props.itemId}`
+    )
       .then((response) => response.json())
       .then((result) => {
         setItem(result);
-        return fetch(config.categoriesURL);
+        return fetch(
+          "https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/categories"
+        );
       })
       .then((response) => response.json())
       .then((result) => {
@@ -42,13 +46,16 @@ const EditItemModal = (props) => {
       itemQuantity: itemQuantityRef.current.value,
     };
 
-    fetch(`${config.listsURL}/${props.listId}/items/${props.itemId}`, {
-      method: "PUT",
-      body: JSON.stringify(item),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${props.listId}/items/${props.itemId}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(item),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => {
         response.json();
         props.onItemUpdate();
@@ -65,9 +72,7 @@ const EditItemModal = (props) => {
         <div>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-1/3 my-6 mx-auto max-w-3xl">
-              {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <h3 className="text-3xl font-semibold">{item.name}</h3>
                   <button
@@ -79,7 +84,6 @@ const EditItemModal = (props) => {
                     </span>
                   </button>
                 </div>
-                {/*body*/}
                 <form className="bg-white px-8 py-6" onSubmit={submitHandler}>
                   <div className="mb-4">
                     <label
@@ -133,7 +137,6 @@ const EditItemModal = (props) => {
                       placeholder="Quantity"
                     />
                   </div>
-                  {/*footer*/}
                   <div className="flex items-center justify-end border-t border-solid border-blueGray-200 rounded-b">
                     <button
                       className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"

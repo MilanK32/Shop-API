@@ -7,7 +7,9 @@ const ItemDetailsModal = (props) => {
 
   useEffect(() => {
     if (props.showDetailsModal) {
-      fetch(`${config.listsURL}/${props.listId}/items/${props.item.id}`)
+      fetch(
+        `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${props.listId}/items/${props.item.id}`
+      )
         .then((response) => response.json())
         .then((result) => {
           setItem(result);

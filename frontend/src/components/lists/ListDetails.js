@@ -38,9 +38,12 @@ const ListDetails = () => {
 
   const onDeleteItemHandler = (itemId) => {
     if (window.confirm("Item will be deleted. Proceed?")) {
-      fetch(`${config.listsURL}/${listId}/items/${itemId}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${listId}/items/${itemId}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((result) => {
           getList();
         })
