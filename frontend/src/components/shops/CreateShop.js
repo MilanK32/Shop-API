@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
-// import config from "../../config";
+import config from "../../config";
 
 const CreateShop = () => {
   const shopNameRef = useRef("");
@@ -17,7 +17,7 @@ const CreateShop = () => {
       shopCity: shopCityRef.current.value,
     };
 
-    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops", {
+    fetch(`${config.awsApi}/shops`, {
       method: "POST",
       body: JSON.stringify(shop),
       headers: {

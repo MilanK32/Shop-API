@@ -11,15 +11,11 @@ const ListDetails = () => {
   let { listId } = useParams();
 
   const getList = useCallback(() => {
-    fetch(
-      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${listId}`
-    )
+    fetch(`${config.awsApi}/lists/${listId}`)
       .then((response) => response.json())
       .then((result) => {
         setList(result);
-        return fetch(
-          `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${listId}/items`
-        );
+        return fetch(`${config.awsApi}/lists/${listId}/items`);
       })
       .then((response) => response.json())
       .then((result) => {
@@ -38,12 +34,9 @@ const ListDetails = () => {
 
   const onDeleteItemHandler = (itemId) => {
     if (window.confirm("Item will be deleted. Proceed?")) {
-      fetch(
-        `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${listId}/items/${itemId}`,
-        {
-          method: "DELETE",
-        }
-      )
+      fetch(`${config.awsApi}/lists/${listId}/items/${itemId}`, {
+        method: "DELETE",
+      })
         .then((result) => {
           getList();
         })

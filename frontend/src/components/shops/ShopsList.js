@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Shop from "./Shop";
-// import config from "../../config";
+import config from "../../config";
 
 const ShopList = () => {
   const [shops, setShops] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops")
+    fetch(`${config.awsApi}/shops`)
       .then((response) => response.json())
       .then((result) => {
         setShops(result);

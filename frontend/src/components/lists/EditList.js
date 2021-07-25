@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-// import config from "../../config";
+import config from "../../config";
 
 const EditList = () => {
   const [list, setList] = useState({});
@@ -12,15 +12,11 @@ const EditList = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(
-      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${id}`
-    )
+    fetch(`${config.awsApi}/lists/${id}`)
       .then((response) => response.json())
       .then((result) => {
         setList(result);
-        return fetch(
-          "https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops/"
-        );
+        return fetch(`${config.awsApi}/shops`);
       })
       .then((response) => response.json())
       .then((result) => {
@@ -36,25 +32,18 @@ const EditList = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const listShop = shops.find(
-      (shop) => shop.id === listShopRef.current.value
-    );
-
     const list = {
       listName: listNameRef.current.value,
-      listShop: listShop,
+      listShop: listShopRef.current.value,
     };
 
-    fetch(
-      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${id}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(list),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${config.awsApi}/lists/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(list),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         response.json();
         history.push("/lists");

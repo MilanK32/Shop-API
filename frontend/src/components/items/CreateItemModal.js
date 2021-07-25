@@ -16,9 +16,7 @@ const CreateItemModal = (props) => {
   }, [showModal]);
 
   const getCategories = () => {
-    fetch(
-      "https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/categories"
-    )
+    fetch(`${config.awsApi}/categories`)
       .then((response) => response.json())
       .then((result) => {
         setCategories(result);
@@ -39,16 +37,13 @@ const CreateItemModal = (props) => {
       itemQuantity: itemQuantityRef.current.value,
     };
 
-    fetch(
-      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${props.list.id}/items`,
-      {
-        method: "POST",
-        body: JSON.stringify(item),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${config.awsApi}/lists/${props.list.id}/items`, {
+      method: "POST",
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         response.json();
         props.onItemSubmit();

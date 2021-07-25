@@ -1,7 +1,6 @@
 const config = {
-  listsURL: "http://localhost:8080/api/lists",
-  shopsURL: "http://localhost:8080/api/shops",
-  categoriesURL: "http://localhost:8080/api/categories",
+  nodeApi: process.env.REACT_APP_API_URL,
+  awsApi: process.env.REACT_APP_AWS_URL,
 };
 
 export default config;

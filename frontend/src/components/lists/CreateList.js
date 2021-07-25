@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-// import config from "../../config";
+import config from "../../config";
 
 const CreateList = () => {
   const [shops, setShops] = useState([]);
@@ -9,7 +9,7 @@ const CreateList = () => {
   const history = useHistory();
 
   useEffect(() => {
-    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops")
+    fetch(`${config.awsApi}/shops`)
       .then((response) => response.json())
       .then((result) => {
         setShops(result);
@@ -20,16 +20,12 @@ const CreateList = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const listShop = shops.find(
-      (shop) => shop.id === listShopRef.current.value
-    );
-
     const list = {
       listName: listNameRef.current.value,
-      listShop: listShop,
+      listShop: listShopRef.current.value,
     };
 
-    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists", {
+    fetch(`${config.awsApi}/lists`, {
       method: "POST",
       body: JSON.stringify(list),
       headers: {

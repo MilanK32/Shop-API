@@ -10,15 +10,11 @@ const EditItemModal = (props) => {
   const itemQuantityRef = useRef("");
 
   const getItem = useCallback(() => {
-    fetch(
-      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${props.listId}/items/${props.itemId}`
-    )
+    fetch(`${config.awsApi}/lists/${props.listId}/items/${props.itemId}`)
       .then((response) => response.json())
       .then((result) => {
         setItem(result);
-        return fetch(
-          "https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/categories"
-        );
+        return fetch(`${config.awsApi}/categories`);
       })
       .then((response) => response.json())
       .then((result) => {
@@ -46,16 +42,13 @@ const EditItemModal = (props) => {
       itemQuantity: itemQuantityRef.current.value,
     };
 
-    fetch(
-      `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${props.listId}/items/${props.itemId}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(item),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${config.awsApi}/lists/${props.listId}/items/${props.itemId}`, {
+      method: "PUT",
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         response.json();
         props.onItemUpdate();

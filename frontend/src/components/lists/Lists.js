@@ -10,18 +10,18 @@ const Lists = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [shopFilter, setshopFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
-  const urlShopFilter = shopFilter ? `shop=${shopFilter}` : "";
-  const urlCategoryFilter = categoryFilter
-    ? `items.category=${categoryFilter}`
-    : "";
+  // const urlShopFilter = shopFilter ? `shop=${shopFilter}` : "";
+  // const urlCategoryFilter = categoryFilter
+  //   ? `items.category=${categoryFilter}`
+  //   : "";
 
   const getLists = useCallback(() => {
-    const urlFilter = `${urlShopFilter}&${urlCategoryFilter}`;
-    const query = new URLSearchParams(urlFilter);
-    const params = query.toString();
-    const url = params ? `${config.listsURL}?${params}` : `${config.listsURL}`;
+    // const urlFilter = `${urlShopFilter}&${urlCategoryFilter}`;
+    // const query = new URLSearchParams(urlFilter);
+    // const params = query.toString();
+    // const url = params ? `${config.listsURL}?${params}` : `${config.listsURL}`;
 
-    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists")
+    fetch(`${config.awsApi}/lists`)
       .then((response) => response.json())
       .then((result) => {
         setLists(result);
@@ -31,11 +31,11 @@ const Lists = () => {
         setIsLoading(false);
         console.log(err);
       });
-  }, [urlShopFilter, urlCategoryFilter]);
+  }, []);
 
   useEffect(() => {
     getLists();
-  }, [getLists, shopFilter]);
+  }, [getLists, shopFilter, categoryFilter]);
 
   const onDeleteListHandler = (id) => {
     if (window.confirm("List will be deleted. Proceed?")) {
@@ -69,8 +69,8 @@ const Lists = () => {
       {!isLoading && (
         <React.Fragment>
           <div className="flex mx-auto w-2/3">
-            <ShopFilter onShopFilter={shopFilterHandler} />
-            <CategoryFilter onCategoryFilter={categoryFilterHandler} />
+            {/* <ShopFilter onShopFilter={shopFilterHandler} />
+            <CategoryFilter onCategoryFilter={categoryFilterHandler} /> */}
           </div>
           <div className="overflow-x-auto">
             <div className="min-w-screen flex justify-center font-sans overflow-hidden">
