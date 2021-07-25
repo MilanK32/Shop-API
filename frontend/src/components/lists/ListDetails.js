@@ -46,12 +46,12 @@ const ListDetails = () => {
 
   return (
     <div>
-      {isLoading && <p className="text-center">Loading...</p>}
-      {!isLoading && (
-        <div className="mt-16">
-          <h2 className="my-6 text-center text-2xl font-semibold text-gray-700">
-            List Details
-          </h2>
+      <div className="mt-16">
+        <h2 className="my-6 text-center text-2xl font-semibold text-gray-700">
+          List Details
+        </h2>
+        {isLoading && <p className="text-center">Loading...</p>}
+        {!isLoading && (
           <div className="max-w-3xl bg-white w-full rounded-lg shadow-xl mx-auto">
             <div className="p-4">
               <h2 className="text-2xl ">{list.name}</h2>
@@ -83,8 +83,8 @@ const ListDetails = () => {
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

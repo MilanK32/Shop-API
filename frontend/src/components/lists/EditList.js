@@ -54,7 +54,7 @@ const EditList = () => {
   return (
     <div className="w-2/5 m-auto">
       <h1 className="text-center text-3xl py-10">Update List</h1>
-      {isLoading && null}
+      {isLoading && <p className="text-center">Loading...</p>}
       {!isLoading && (
         <form
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"

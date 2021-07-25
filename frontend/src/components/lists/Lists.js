@@ -10,18 +10,20 @@ const Lists = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [shopFilter, setshopFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
-  // const urlShopFilter = shopFilter ? `shop=${shopFilter}` : "";
-  // const urlCategoryFilter = categoryFilter
-  //   ? `items.category=${categoryFilter}`
-  //   : "";
+  const urlShopFilter = shopFilter ? `listShop=${shopFilter}` : "";
+  const urlCategoryFilter = categoryFilter
+    ? `listCategory=${categoryFilter}`
+    : "";
 
   const getLists = useCallback(() => {
-    // const urlFilter = `${urlShopFilter}&${urlCategoryFilter}`;
-    // const query = new URLSearchParams(urlFilter);
-    // const params = query.toString();
-    // const url = params ? `${config.listsURL}?${params}` : `${config.listsURL}`;
+    const urlFilter = `${urlShopFilter}&${urlCategoryFilter}`;
+    const query = new URLSearchParams(urlFilter);
+    const params = query.toString();
+    const url = params
+      ? `${config.awsApi}/lists?${params}`
+      : `${config.awsApi}/lists`;
 
-    fetch(`${config.awsApi}/lists`)
+    fetch(url)
       .then((response) => response.json())
       .then((result) => {
         setLists(result);
@@ -31,7 +33,7 @@ const Lists = () => {
         setIsLoading(false);
         console.log(err);
       });
-  }, []);
+  }, [urlShopFilter, urlCategoryFilter]);
 
   useEffect(() => {
     getLists();
@@ -39,12 +41,9 @@ const Lists = () => {
 
   const onDeleteListHandler = (id) => {
     if (window.confirm("List will be deleted. Proceed?")) {
-      fetch(
-        `https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/lists/${id}`,
-        {
-          method: "DELETE",
-        }
-      )
+      fetch(`${config.awsApi}/lists/${id}`, {
+        method: "DELETE",
+      })
         .then((result) => {
           getLists();
         })
@@ -69,8 +68,8 @@ const Lists = () => {
       {!isLoading && (
         <React.Fragment>
           <div className="flex mx-auto w-2/3">
-            {/* <ShopFilter onShopFilter={shopFilterHandler} />
-            <CategoryFilter onCategoryFilter={categoryFilterHandler} /> */}
+            <ShopFilter onShopFilter={shopFilterHandler} />
+            <CategoryFilter onCategoryFilter={categoryFilterHandler} />
           </div>
           <div className="overflow-x-auto">
             <div className="min-w-screen flex justify-center font-sans overflow-hidden">
