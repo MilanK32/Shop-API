@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import config from "../../config";
 
 const ShopFilter = (props) => {
   const [shops, setShops] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
-    fetch("https://5ji94prlsb.execute-api.us-east-2.amazonaws.com/dev/shops")
+    fetch(`${config.awsApi}/shops`)
       .then((response) => response.json())
       .then((result) => {
         setShops(result);
