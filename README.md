@@ -7,7 +7,7 @@ Shop API created using Node.js, Express.js and Mongoose.
 - Cloning the repo
 
 ```bash
-$ git clone https://github.com/MilanK32/Shop-API.git
+$ git clone https://github.com/mkozlovacki/react-express-shop-api.git
 ```
 
 - Installing dependencies
